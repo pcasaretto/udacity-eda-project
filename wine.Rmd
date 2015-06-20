@@ -321,7 +321,7 @@ concentrations.
 We can investigate how much of the variance in pH these tree acidity variables
 can explain using a linear model.
 
-```{r echo=FALSE, Linear_Model_Acids}
+```{r echo=FALSE, warning=FALSE, Linear_Model_Acids}
 acidsLM <- lm(pH ~ 
                 I(log10(citric.acid)) +
                 I(log10(volatile.acidity)) +
@@ -422,7 +422,7 @@ free.sulfur.dioxide.
 
 ### Alcohol and other variables
 
-```{r echo=FALSE, density_over_alcohol_vs_quality}
+```{r echo=FALSE, warning=FALSE, density_over_alcohol_vs_quality}
 ggplot(data = wine,
        aes(y = density, x = alcohol,
            color = quality)) +
@@ -432,7 +432,7 @@ ggplot(data = wine,
 When we hold alcohol constant, there is no evidence that density affects
 quality which confirms our earlier suspicion.
 
-```{r echo=FALSE, sulphates_vs_alcohol_vs_quality}
+```{r echo=FALSE, warning=FALSE, sulphates_vs_alcohol_vs_quality}
 ggplot(data = wine,
        aes(y = sulphates, x = alcohol,
            color = quality)) +
@@ -449,7 +449,7 @@ ggplot(data = wine,
 Interesting! It seems that for wines with high alcohol content, having a 
 higher concentration of sulphates produces better wines.
 
-```{r echo=FALSE, volatile.acidity_vs_alcohol_vs_quality}
+```{r echo=FALSE, warning=FALSE, volatile.acidity_vs_alcohol_vs_quality}
 ggplot(data = wine,
        aes(y = volatile.acidity, x = alcohol,
            color = quality)) +
@@ -464,7 +464,7 @@ ggplot(data = wine,
 The reverse seems to be true for volatile acidity. Having less acetic acid on
 higher concentration of alcohol seems to produce better wines.
 
-```{r echo=FALSE, pH_vs_alcohol_vs_quality}
+```{r echo=FALSE, warning=FALSE, pH_vs_alcohol_vs_quality}
 ggplot(data = wine,
        aes(y = pH, x = alcohol,
            color = quality)) +
@@ -566,8 +566,9 @@ models :) .
 
 ### Plot One
 
-```{r echo=FALSE, citric.acid.final}
-qplot(citric.acid, data = wine, binwidth = .01)
+```{r echo=FALSE, warning=FALSE, citric.acid.final}
+qplot(citric.acid, data = wine, binwidth = .01) +
+  xlab("citric acid (g / dm^3)")
 ```
 
 ### Description One
@@ -576,12 +577,14 @@ from a variable collected in a experimental situation.
 
 ### Plot Two
 
-```{r echo=FALSE, sulphates_vs_alcohol_vs_quality.final}
+```{r echo=FALSE, warning=FALSE, sulphates_vs_alcohol_vs_quality.final}
 ggplot(data = wine,
        aes(y = sulphates, x = alcohol,
            color = quality)) +
   geom_point() +
-  scale_y_continuous(limits=c(0.3,1.5))
+  scale_y_continuous(limits=c(0.3,1.5)) +
+  ylab("sulphates (potassium sulphate - g / dm3)") +
+  xlab("alcohol (% by volume)")
 ```
 
 ### Description Two
