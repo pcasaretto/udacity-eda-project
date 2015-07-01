@@ -500,7 +500,8 @@ and to look for other relationships in the data.
 ggplot(data = wine,
        aes(y = density, x = alcohol,
            color = quality)) +
-  geom_point()
+  geom_point() +
+  scale_color_brewer()
 ```
 
 When we hold alcohol constant, there is no evidence that density affects
@@ -511,13 +512,15 @@ ggplot(data = wine,
        aes(y = sulphates, x = alcohol,
            color = quality)) +
   geom_point() +
-  scale_y_continuous(limits=c(0.3,1.5))
+  scale_y_continuous(limits=c(0.3,1.5)) +
+  scale_color_brewer()
 ggplot(data = wine,
        aes(y = sulphates, x = alcohol,
            color = quality)) +
   geom_point() +
   scale_y_continuous(limits=c(0.3,1.5)) +
-  facet_wrap(~rating)
+  facet_wrap(~rating) +
+  scale_color_brewer()
 ```
 
 Interesting! It seems that for wines with high alcohol content, having a 
@@ -527,12 +530,14 @@ higher concentration of sulphates produces better wines.
 ggplot(data = wine,
        aes(y = volatile.acidity, x = alcohol,
            color = quality)) +
-  geom_point()
+  geom_point() +
+  scale_color_brewer()
 ggplot(data = wine,
        aes(y = volatile.acidity, x = alcohol,
            color = quality)) +
   geom_point() +
-  facet_wrap(~rating)
+  facet_wrap(~rating) +
+  scale_color_brewer()
 ```
 
 The reverse seems to be true for volatile acidity. Having less acetic acid on
@@ -542,12 +547,14 @@ higher concentration of alcohol seems to produce better wines.
 ggplot(data = wine,
        aes(y = pH, x = alcohol,
            color = quality)) +
-  geom_point()
+  geom_point() +
+  scale_color_brewer()
 ggplot(data = wine,
        aes(y = pH, x = alcohol,
            color = quality)) +
   geom_point() +
-  facet_wrap(~rating)
+  facet_wrap(~rating) +
+  scale_color_brewer()
 ```
 
 Low pH and high alcohol concentration seem to be a good match.
@@ -561,7 +568,8 @@ relationship between the acids and quality.
 ggplot(data = wine,
        aes(y = fixed.acidity, x = volatile.acidity,
            color = quality)) +
-  geom_point()
+  geom_point() +
+  scale_color_brewer()
 ```
 
 Almost no variance in the y axis compared to the x axis. Lets try the other
@@ -572,7 +580,8 @@ ggplot(data = wine,
        aes(y = citric.acid, x = volatile.acidity,
            color = quality)) +
   geom_point() +
-  facet_wrap(~rating)
+  facet_wrap(~rating) +
+  scale_color_brewer()
 ```
 
 High citric acid and low acetic acid seems like a good combination.
@@ -581,7 +590,8 @@ High citric acid and low acetic acid seems like a good combination.
 ggplot(data = wine,
        aes(y = citric.acid, x = fixed.acidity,
            color = quality)) +
-  geom_point()
+  geom_point() +
+  scale_color_brewer()
   cor.test(wine$citric.acid, wine$fixed.acidity) 
 ```
 
@@ -664,7 +674,8 @@ ggplot(data = wine,
   geom_point() +
   scale_y_continuous(limits=c(0.3,1.5)) +
   ylab("sulphates (potassium sulphate - g / dm3)") +
-  xlab("alcohol (% by volume)")
+  xlab("alcohol (% by volume)") +
+  scale_color_brewer()
 ```
 
 ### Description Two
