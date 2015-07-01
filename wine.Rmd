@@ -667,7 +667,8 @@ models :) .
 ```{r echo=FALSE, warning=FALSE, alcohol.final}
 ggplot(data=wine, aes(y=alcohol, x=quality)) + 
   geom_boxplot() +
-  xlab("alcohol concentration (% by volume)")
+  xlab("alcohol concentration (% by volume)") +
+  ggtitle("Influence of alcohol on wine quality")
 ```
 
 ### Description One
@@ -682,9 +683,10 @@ ggplot(data = wine,
            color = quality)) +
   geom_point() +
   scale_y_continuous(limits=c(0.3,1.5)) +
-  ylab("sulphates (potassium sulphate - g / dm3)") +
+  ylab("potassium sulphate (g/dm3)") +
   xlab("alcohol (% by volume)") +
-  scale_color_brewer()
+  scale_color_brewer() +
+  ggtitle("Alcohol and sulphates over wine quality")
 ```
 
 ### Description Two
@@ -700,7 +702,8 @@ df <- data.frame(
 )
 names(df) <- c("quality", "error")
 ggplot(data=df, aes(x=quality,y=error)) +
-  geom_point()
+  geom_point() +
+  ggtitle("Linear model errors over expected quality")
 ```
 
 
