@@ -416,12 +416,20 @@ ggplot(data=wine, aes(y=sulphates, x=quality)) +
   geom_boxplot()
 ```
 
+```{r echo=FALSE, results='asis', Quality_vs_sulphates_summaries}
+summarise_boxplot(wine, "quality", "sulphates")
+```
+
 Interesting. Altough there are many outliers in the medium wines, better
 wines seem to have a higher concentration of sulphates.
 
 ```{r echo=FALSE, Quality_vs_alcohol}
 ggplot(data=wine, aes(y=alcohol, x=quality)) + 
   geom_boxplot()
+```
+
+```{r echo=FALSE, results='asis', Quality_vs_alcohol_summaries}
+summarise_boxplot(wine, "quality", "alcohol")
 ```
 
 The correlation is clear here. With an increase in alcohol graduation we see an
@@ -656,14 +664,15 @@ models :) .
 
 ### Plot One
 
-```{r echo=FALSE, warning=FALSE, citric.acid.final}
-qplot(citric.acid, data = wine, binwidth = .01) +
-  xlab("citric acid (g / dm^3)")
+```{r echo=FALSE, warning=FALSE, alcohol.final}
+ggplot(data=wine, aes(y=alcohol, x=quality)) + 
+  geom_boxplot() +
+  xlab("alcohol concentration (% by volume)")
 ```
 
 ### Description One
-This is a very strange distribution. It does not match what we would expect
-from a variable collected in a experimental situation. 
+This chart revealed how alcohol has a big influence on the quality of wines.
+Next time I'm the supermarket, it's the first thing I'm going to look for.
 
 ### Plot Two
 
